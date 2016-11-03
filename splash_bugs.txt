@@ -1,0 +1,29 @@
+There are four known bugs:
+
+1) We use a local recovery timer (see start_lrt()), which is supposed to 
+timeout if a node does not receive any packet in the 3rd round. The timer 
+is intended to make sure that such a node will start local recovery on 
+time. However, instead of timing out after the scheduled timeout period of 
+8+ seconds (RIPPLE_ROUNDS_DURATION), the timer sometimes timeouts at 
+arbitrary time, often at a much larger value than 8+ seconds. Thus arbitrarily 
+increasing the dissemination time. You can verify this bug 
+by noting the time when "local reovery start time" is printed.
+
+2) Sometimes the ROOT node fails to start a dissemination round. It hangs after  
+submitting the first packet of the round to the under-lying radio.
+
+3) Splash assumes that a consistent dissemination tree is given. We 
+currently use Contiki's collection protocol to build such a tree. 
+However, such a tree can sometimes be inconsistent. For example, 
+a node can be assigned with its hop count as "X+1" as it would have 
+inferred its parent's hopcount as X while actually its parent's hopcount 
+can be different from X. If you see anything unusual as a node or a 
+group of nodes received only one or two packets or none in all the three 
+rounds of Splash, it is probable that the nodes had a wrong parent. 
+You can verify this 
+bug as every node prints details of its hopcount and its parent 
+(see printf in the statement "if(mode == COLLECTION)" in splash-example.c).
+
+4) Local recovery process can be affected because of the well-known 
+false-positive acknowledgments. However, this happens rarely.
+

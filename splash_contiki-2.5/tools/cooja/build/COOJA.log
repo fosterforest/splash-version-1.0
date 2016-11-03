@@ -1,0 +1,3 @@
+[11:24:08 - main] [GUI.java:2959] [WARN] - JAVA_HOME environment variable not set, Contiki motes (OS-level) may not compile
+[11:24:09 - AWT-EventQueue-0] [GUI.java:2660] [INFO] - External tools default settings: /external_tools_linux_64.config
+[11:24:09 - AWT-EventQueue-0] [GUI.java:2692] [WARN] - Error when reading user settings from: /home/manjunath/.cooja.user.properties

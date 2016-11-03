@@ -1,0 +1,47 @@
+Overview:
+
+Splash is built over Glossy code. We ported original Glossy code from 
+Contiki-2.4 to Contiki-2.5 and Splash is implemented over the ported 
+version of 2.5. For users' convenience, we have included the entire 
+Contiki-2.5 (spalsh_contiki-2.5) folder that contains the Splash code. 
+
+Files:
+
+The files splash_plus_glossy.c, splash_plus_glossy.h, and 
+splash_plus_glossy_spi.h contain the core of Splash. These files are 
+located under "core/dev/". In addition, several other files have also 
+been modified with minor changes. The local recovery is implemented 
+in splash-example.c, an example application using Splash. This example 
+is located under "examples/splash-example" and we suggest an user to 
+start from this directory.
+
+Variables:
+
+RIPPLE_PROGRAM_OFFSET: Defines the starting address of the Xmem where 
+the disseminated object is stored in every mote.
+
+EEPROMFS_ADDR_CODEPROP, NODE_ID_XMEM_OFFSET, and CFS_XMEM_CONF_OFFSET: 
+These addresses are used on the initiator node (root node). They point 
+to the object to be disseminated. EEPROMFS_ADDR_CODEPROP and 
+NODE_ID_XMEM_OFFSET point to the same copies of the object that are 
+to be disseminated in first and second rounds of Splash respectively. 
+The XOR-coded version of the object is stored in Xmem starting at 
+CFS_XMEM_CONF_OFFSET.
+
+NUM_PROGRAM_PAGES: Defines the number of packets in the disseminated 
+object.
+
+R1_H1_CH, R2_H1_CH, R3_H1_CH, etc.: These are the channels to be 
+assigned to different hops in different dissemination rounds. Define 
+them statically.
+
+DATA_LEN: Packet length
+
+INITIATOR_NODE_ID: ID of the root node.
+
+
+Known Bugs:
+
+  There are a few. Please contact the primary author if you encounter one.
+
+########################################################################################

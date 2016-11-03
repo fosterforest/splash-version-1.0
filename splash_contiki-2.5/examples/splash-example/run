@@ -1,0 +1,7 @@
+make clean
+rm splash-example.exe
+make 
+cp splash-example.sky splash-example.exe
+#cp example-collect.exe /home/manjunath/
+cp splash-example.exe  /home/sairam/
+#scp example-collect.exe doddaven@sunfire:
